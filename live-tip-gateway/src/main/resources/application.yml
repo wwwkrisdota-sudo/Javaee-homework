@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: live-tip-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: audience-service
+          uri: lb://live-tip-audience-service
+          predicates:
+            - Path=/api/audience/**
+        - id: finance-service
+          uri: lb://live-tip-finance-service
+          predicates:
+            - Path=/api/finance/**
+        - id: analytics-service
+          uri: lb://live-tip-analytics-service
+          predicates:
+            - Path=/api/analytics/**
+        - id: mock-service
+          uri: lb://live-tip-mock-service
+          predicates:
+            - Path=/api/mock/**
+
+logging:
+  level:
+    root: INFO
+    com.live.tip: DEBUG
