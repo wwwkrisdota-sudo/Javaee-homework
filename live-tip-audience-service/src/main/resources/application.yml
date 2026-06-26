@@ -13,6 +13,9 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    openfeign:
+      circuitbreaker:
+        enabled: true
 
 mybatis-plus:
   configuration:
@@ -27,6 +30,28 @@ feign:
       default:
         connectTimeout: 2000
         readTimeout: 2000
+  circuitbreaker:
+    enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      analyticsProfile:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        slowCallRateThreshold: 100
+        slowCallDurationThreshold: 2s
+  timelimiter:
+    instances:
+      analyticsProfile:
+        timeoutDuration: 2s
+
+audience:
+  finance-sync:
+    interval-ms: 60000
 
 logging:
   level:

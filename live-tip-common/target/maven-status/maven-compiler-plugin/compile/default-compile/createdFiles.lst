@@ -5,6 +5,8 @@ com\live\tip\common\constant\CommonConstants.class
 com\live\tip\common\entity\AnchorCommissionRate.class
 com\live\tip\common\entity\FinanceSettlement.class
 com\live\tip\common\entity\HttpRequestLog.class
+com\live\tip\common\dto\SettlementReceiveRequest.class
+com\live\tip\common\dto\AudienceProfileVO.class
 com\live\tip\common\exception\BusinessException.class
 com\live\tip\common\trace\TraceIdFilter.class
 com\live\tip\common\entity\Audience.class
